@@ -31,7 +31,9 @@ html, body {
     background: white;
     padding: 10px;
     border-right: 2px solid #ddd;
+    display: grid;
 }
+
 
 .main-content {
     flex: 1;
@@ -87,4 +89,35 @@ html, body {
 
 #toggleSimulation:hover {
     background: #0056b3;
+}
+
+.dashboard-header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 15px;
+    background: white;
+    border-bottom: 2px solid #ddd;
+    position: relative; /* Asegura que se posicione correctamente */
+    z-index: 1;
+}
+
+.dashboard-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden correctamente */
+    height: calc(100% - 50px);
+    padding: 20px;
 }

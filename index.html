@@ -9,23 +9,31 @@
 
 </head>
 <body>
-
+    <!-- Aquí estaría la barra de navegación superior -->
     <div class="navbar">NavBar</div>
 
     <div class="dashboard">
-        <div class="sidebar">
+
+        <!-- Sección del título y subtítulo -->
+        <div class="dashboard-header">
             <h2>Dashboard</h2>
             <p>Consulta la temperatura del agua en tiempo real</p>
         </div>
 
+        <!-- Aquí podría estar un panel lateral con posibles opciones o menús
+        <div class="sidebar">
+        </div> --> 
+
+        <!-- Contenedor principal con la gráfica y botón de simulación -->
         <div class="main-content">
             <div class="graph-container" id="graph">
                 <canvas id="temperatureChart"></canvas> <!-- Gráfica de temperatura en tiempo real-->
             </div>
 
-            <button id="toggleSimulation">Pausar</button>
+            <button id="toggleSimulation">Pausar</button> <!-- Botón para pausar la simulación -->
         </div>
 
+        <!-- Panel lateral derecho de información con la temperatura actual y promedio -->
         <div class="info-panel">
             <div class="info-box">
                 <span class="icon">🌡</span>
@@ -38,6 +46,7 @@
         </div>
     </div>
 
+    <!-- Enlace al script que manejará la lógica de la simulación y actualización de datos -->
     <script src="script.js"></script> <!-- Enlace al JavaScript -->
 </body>
 </html>
