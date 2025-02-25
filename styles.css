@@ -115,3 +115,38 @@ html, body {
     border-radius: 50%;
 }
 
+
+.hidden {
+    display: none;
+}
+
+#alertContainer {
+    background: #fff8e1;
+    padding: 10px;
+    border: 1px solid #ff9800;
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#alertList {
+    list-style: none;
+    padding: 0;
+}
+
+#alertList li {
+    font-size: 14px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.alert-indicator {
+    color: red;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.alert-indicator.hidden {
+    display: none;
+}
+

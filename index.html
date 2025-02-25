@@ -31,9 +31,16 @@
             <div class="button-group">
                 <button id="exportJSON">Exportar JSON</button>
                 <button id="exportCSV">Exportar CSV</button>
-                <button id="viewAlerts">Ver Alertas</button>
+                <button id="viewAlerts">
+                    Ver Alertas <span id="alertIndicator" class="alert-indicator hidden">🔴</span>
+                </button>
             </div>
-
+        
+            <div id="alertContainer" class="hidden">
+                <h4>Historial de Alertas</h4>
+                <ul id="alertList"></ul>
+            </div>
+        
             <div class="info-box">
                 <span class="icon">🌡</span>
                 <span>Temperatura actual: <span id="tempActual">--</span>°C</span>
@@ -43,6 +50,7 @@
                 <span>Promedio: <span id="tempPromedio">--</span>°C</span>
             </div>
         </aside>
+        
 
     </div>
 

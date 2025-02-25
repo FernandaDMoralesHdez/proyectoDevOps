@@ -142,5 +142,82 @@ function getPointColor(temp) {
     if (temp <= 22) return "blue"; // Temperatura baja (peligro)
     return "black";  // Normal
 }
+//Nuevo codigo
+let alertList = [];
+let hasNewAlert = false;
+
+document.getElementById("viewAlerts").addEventListener("click", function () {
+    const alertContainer = document.getElementById("alertContainer");
+    alertContainer.classList.toggle("hidden"); // Mostrar/Ocultar alertas
+
+    // Si se abren las alertas, quitar el indicador 🔴
+    if (!alertContainer.classList.contains("hidden")) {
+        hasNewAlert = false;
+        document.getElementById("alertIndicator").classList.add("hidden");
+    }
+});
+
+// Función para agregar alertas de manera controlada
+function checkCriticalTemperature(temp, timestamp) {
+    let message = "";
+    if (temp >= 37) {
+        message = `🔥 Alerta: Temperatura alta (${temp}°C) a las ${timestamp}`;
+    } else if (temp <= 24) {
+        message = `❄ Alerta: Temperatura baja (${temp}°C) a las ${timestamp}`;
+    }
+
+    // Aplicamos una probabilidad del 30% para que la alerta se genere
+    if (message && Math.random() < 0.3) {  // 30% de probabilidad
+        alertList.push(message);
+        updateAlertList();
+        notifyNewAlert();
+    }
+}
+
+// Función para actualizar la lista de alertas en pantalla
+function updateAlertList() {
+    const alertListElement = document.getElementById("alertList");
+    alertListElement.innerHTML = ""; // Limpia la lista
+    alertList.forEach(alert => {
+        const li = document.createElement("li");
+        li.textContent = alert;
+        alertListElement.appendChild(li);
+    });
+}
+
+// Función para mostrar el indicador 🔴 en el botón
+function notifyNewAlert() {
+    hasNewAlert = true;
+    document.getElementById("alertIndicator").classList.remove("hidden");
+}
+
+// Integrar alertas en la lógica de actualización de datos
+function fetchTemperatures() {
+    if (!isRunning) return;  // No hacer fetch si está pausado
+
+    fetch('http://127.0.0.1:5000/api/temperatures')
+    .then(response => response.json())
+    .then(data => {
+        if (data.length === 0) {
+            console.log("No hay datos disponibles aún.");
+            return;
+        }
+
+        temperatures.length = 0;
+        timestamps.length = 0;
+
+        data.forEach(item => {
+            temperatures.push(item.temperature);
+            timestamps.push(item.timestamp);
+            checkCriticalTemperature(item.temperature, item.timestamp); // Revisar alertas
+        });
+
+        updateDisplay();
+        chart.data.labels = timestamps;
+        chart.data.datasets[0].data = temperatures;
+        chart.update();
+    })
+    .catch(error => console.error('Error al obtener temperaturas:', error));
+}
 
 
