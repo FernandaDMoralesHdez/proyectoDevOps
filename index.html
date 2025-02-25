@@ -5,36 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Temperatura</title>
     <link rel="stylesheet" href="styles.css"> <!-- Enlace al CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Enlace a la librería de Chart.js -->	
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
-    <!-- Aquí estaría la barra de navegación superior -->
-    <div class="navbar">NavBar</div>
+
+    <!-- Sección del título y subtítulo -->
+    <header class="dashboard-header">
+        <h2>Dashboard</h2>
+        <p>Consulta la temperatura del agua en tiempo real</p>
+    </header>
 
     <div class="dashboard">
-
-        <!-- Sección del título y subtítulo -->
-        <div class="dashboard-header">
-            <h2>Dashboard</h2>
-            <p>Consulta la temperatura del agua en tiempo real</p>
-        </div>
-
-        <!-- Aquí podría estar un panel lateral con posibles opciones o menús
-        <div class="sidebar">
-        </div> --> 
-
+        
         <!-- Contenedor principal con la gráfica y botón de simulación -->
         <div class="main-content">
-            <div class="graph-container" id="graph">
-                <canvas id="temperatureChart"></canvas> <!-- Gráfica de temperatura en tiempo real-->
+            <div class="graph-container">
+                <canvas id="temperatureChart"></canvas> <!-- Gráfica de temperatura -->
             </div>
 
             <button id="toggleSimulation">Pausar</button> <!-- Botón para pausar la simulación -->
         </div>
 
-        <!-- Panel lateral derecho de información con la temperatura actual y promedio -->
-        <div class="info-panel">
+        <!-- Panel lateral derecho con botones y datos -->
+        <aside class="info-panel">
+            <div class="button-group">
+                <button id="exportJSON">Exportar JSON</button>
+                <button id="exportCSV">Exportar CSV</button>
+                <button id="viewAlerts">Ver Alertas</button>
+            </div>
+
             <div class="info-box">
                 <span class="icon">🌡</span>
                 <span>Temperatura actual: <span id="tempActual">--</span>°C</span>
@@ -43,12 +42,11 @@
                 <span class="icon">📊</span>
                 <span>Promedio: <span id="tempPromedio">--</span>°C</span>
             </div>
-        </div>
+        </aside>
+
     </div>
 
-    <!-- Enlace al script que manejará la lógica de la simulación y actualización de datos -->
-    <script src="script.js"></script> <!-- Enlace al JavaScript -->
+    <!-- Script para manejar la simulación y exportación -->
+    <script src="script.js"></script>
 </body>
 </html>
-
-

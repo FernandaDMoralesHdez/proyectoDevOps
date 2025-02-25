@@ -1,7 +1,9 @@
+let isRunning = true;
+let interval;
 let temperatures = [];
 let timestamps = [];
 
-// Obtiene el contexto del canvas para la gráfica
+// Inicializar la gráfica con Chart.js
 const ctx = document.getElementById("temperatureChart").getContext("2d");
 const chart = new Chart(ctx, {
     type: "line",
@@ -13,7 +15,9 @@ const chart = new Chart(ctx, {
             borderColor: "red",
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderWidth: 2,
-            fill: true
+            fill: true,
+            pointBackgroundColor: temperatures.map(temp => getPointColor(temp)), // Cambia color de puntos críticos
+            pointRadius: temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3), // Agranda los puntos críticos
         }]
     },
     options: {
@@ -23,39 +27,54 @@ const chart = new Chart(ctx, {
             x: { title: { display: true, text: "Tiempo" } },
             y: { 
                 title: { display: true, text: "Temperatura (°C)" }, 
-                suggestedMin: 10,
-                suggestedMax: 50  
+                suggestedMin: 15,
+                suggestedMax: 40  
+            }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        let temp = tooltipItem.raw;
+                        let symbol = temp >= 38 ? "🔥" : temp <= 22 ? "❄" : "";
+                        return ` ${symbol} ${temp}°C`;
+                    }
+                }
             }
         }
     }
 });
 
-// Función para obtener el último dato de temperatura y actualizar la gráfica
-function fetchLatestTemperature() {
-    fetch('http://127.0.0.1:5000/api/last_temperature')
+// Obtener datos desde el backend Flask
+function fetchTemperatures() {
+    if (!isRunning) return;  // No hacer fetch si está pausado
+
+    fetch('http://127.0.0.1:5000/api/temperatures')
     .then(response => response.json())
     .then(data => {
-        if (!data || !data.temperature) return;
-
-        // Agregar solo el nuevo valor
-        temperatures.push(data.temperature);
-        timestamps.push(data.timestamp);
-
-        // Mantener solo los últimos 10 valores en la gráfica
-        if (temperatures.length > 10) {
-            temperatures.shift();
-            timestamps.shift();
+        if (data.length === 0) {
+            console.log("No hay datos disponibles aún.");
+            return;
         }
+
+        // Limpiar arrays
+        temperatures.length = 0;
+        timestamps.length = 0;
+
+        data.forEach(item => {
+            temperatures.push(item.temperature);
+            timestamps.push(item.timestamp);
+        });
 
         updateDisplay();
         chart.data.labels = timestamps;
         chart.data.datasets[0].data = temperatures;
         chart.update();
     })
-    .catch(error => console.error('Error al obtener la última temperatura:', error));
+    .catch(error => console.error('Error al obtener temperaturas:', error));
 }
 
-// Actualiza la temperatura actual y el promedio en la interfaz
+// Mostrar la temperatura actual y el promedio
 function updateDisplay() {
     if (temperatures.length > 0) {
         let latestTemp = temperatures[temperatures.length - 1];
@@ -65,9 +84,63 @@ function updateDisplay() {
     }
 }
 
-// Llama a la función cada 2 segundos para actualizar en tiempo real
-setInterval(fetchLatestTemperature, 2000);
-
 // Inicia la consulta de datos
-fetchLatestTemperature();
+function startFetching() {
+    fetchTemperatures();  // Ejecuta la primera consulta de inmediato
+    interval = setInterval(fetchTemperatures, 2000);
+}
+
+// Botón para pausar/reanudar la consulta
+document.getElementById("toggleSimulation").addEventListener("click", function () {
+    if (isRunning) {
+        clearInterval(interval);
+        this.textContent = "Reanudar";
+    } else {
+        startFetching();
+        this.textContent = "Pausar";
+    }
+    isRunning = !isRunning;
+});
+
+// Comienza la consulta de datos
+startFetching();
+
+// Agregar eventos a los botones de exportación
+document.getElementById("exportJSON").addEventListener("click", exportToJSON);
+document.getElementById("exportCSV").addEventListener("click", exportToCSV);
+
+// Función para exportar datos a JSON
+function exportToJSON() {
+    const data = timestamps.map((timestamp, index) => ({
+        timestamp: timestamp,
+        temperature: temperatures[index]
+    }));
+    const jsonData = JSON.stringify(data, null, 2);
+    downloadFile("temperaturas.json", jsonData, "application/json");
+}
+
+function exportToCSV() {
+    let csvContent = "Timestamp,Temperature\n"; // Encabezados
+    timestamps.forEach((timestamp, index) => {
+        csvContent += `${timestamp},${temperatures[index]}\n`; // Alineación correcta
+    });
+    downloadFile("temperaturas.csv", csvContent, "text/csv");
+}
+
+
+// Función auxiliar para descargar archivos
+function downloadFile(filename, content, type) {
+    const blob = new Blob([content], { type });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+
+function getPointColor(temp) {
+    if (temp >= 38) return "red";  // Temperatura alta (peligro)
+    if (temp <= 22) return "blue"; // Temperatura baja (peligro)
+    return "black";  // Normal
+}
+
 
