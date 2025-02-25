@@ -17,27 +17,27 @@
 
     <div class="dashboard">
         
-        <!-- Contenedor principal con la gráfica y botón de simulación -->
+        <!-- Contenedor principal con la gráfica y botón de Pausar/Reanudar simulación -->
         <div class="main-content">
             <div class="graph-container">
                 <canvas id="temperatureChart"></canvas> <!-- Gráfica de temperatura -->
             </div>
 
-            <button id="toggleSimulation">Pausar</button> <!-- Botón para pausar la simulación -->
+            <button id="toggleSimulation">Pausar</button> <!-- Botón -->
         </div>
 
-        <!-- Panel lateral derecho con botones y datos -->
+        <!-- Panel lateral derecho con botones y datos procesados (Promedio)-->
         <aside class="info-panel">
             <div class="button-group">
                 <button id="exportJSON">Exportar JSON</button>
                 <button id="exportCSV">Exportar CSV</button>
                 <button id="viewAlerts">
-                    Ver Alertas <span id="alertIndicator" class="alert-indicator hidden">🔴</span>
+                    Ver alertas <span id="alertIndicator" class="alert-indicator hidden">🔴</span>
                 </button>
             </div>
         
             <div id="alertContainer" class="hidden">
-                <h4>Historial de Alertas</h4>
+                <h4>Historial de alertas</h4>
                 <ul id="alertList"></ul>
             </div>
         

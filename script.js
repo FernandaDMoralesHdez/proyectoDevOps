@@ -12,8 +12,8 @@ const chart = new Chart(ctx, {
         datasets: [{
             label: "Temperatura (°C)",
             data: temperatures,
-            borderColor: "red",
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(226, 105, 172)",
+            backgroundColor: "rgba(236, 143, 213, 0.66)",
             borderWidth: 2,
             fill: true,
             pointBackgroundColor: temperatures.map(temp => getPointColor(temp)), // Cambia color de puntos críticos
@@ -138,10 +138,11 @@ function downloadFile(filename, content, type) {
 }
 
 function getPointColor(temp) {
-    if (temp >= 38) return "red";  // Temperatura alta (peligro)
-    if (temp <= 22) return "blue"; // Temperatura baja (peligro)
+    if (temp >= 37) return "red";  // Temperatura alta (peligro)
+    if (temp <= 24) return "blue"; // Temperatura baja (peligro)
     return "black";  // Normal
 }
+
 //Nuevo codigo
 let alertList = [];
 let hasNewAlert = false;
@@ -213,9 +214,12 @@ function fetchTemperatures() {
         });
 
         updateDisplay();
-        chart.data.labels = timestamps;
+
+        // Actualizar las propiedades dinámicas de la gráfica
         chart.data.datasets[0].data = temperatures;
-        chart.update();
+        chart.data.datasets[0].pointBackgroundColor = temperatures.map(temp => getPointColor(temp));
+        chart.data.datasets[0].pointRadius = temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3);
+        chart.update(); 
     })
     .catch(error => console.error('Error al obtener temperaturas:', error));
 }
