@@ -169,3 +169,14 @@ html, body {
     width: 100%;
     text-align: center;
 }
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background: #032547;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
