@@ -28,7 +28,7 @@ def get_temperatures():
 
 @app.route('/')
 def home():
-    return "Servidor en funcionamiento. Visita /api/temperatures para ver los datos."
+    return "Servidor en funcionamiento. Visita http://127.0.0.1:5000/api/temperatures para ver los datos :)"
 
 if __name__ == '__main__':
     # Iniciar la generación de datos en un hilo separado
