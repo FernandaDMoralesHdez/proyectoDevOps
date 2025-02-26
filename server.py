@@ -15,7 +15,7 @@ def generate_temperature():
     while True:
         temp = round(random.uniform(20, 40), 2)  # Simula temperatura entre 20 y 40°C
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")  # Obtiene la hora actual
-        if len(temperature_data) >= 20:  # Mantiene un límite de 20 datos
+        if len(temperature_data) >= 50:  # Mantiene un límite de 50 datos
             temperature_data.pop(0)
         temperature_data.append({"timestamp": timestamp, "temperature": temp})
         print(f"Generado: {temp}°C a las {timestamp}")  # Para depuración en consola
