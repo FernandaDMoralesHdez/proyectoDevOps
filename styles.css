@@ -150,3 +150,22 @@ html, body {
     display: none;
 }
 
+.left-panel {
+    width: 15%;
+    background: white;
+    padding: 10px;
+    border-right: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-panel .info-box {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f0f8ff;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}

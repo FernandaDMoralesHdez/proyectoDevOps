@@ -81,6 +81,10 @@ function updateDisplay() {
         document.getElementById("tempActual").textContent = latestTemp;
         let avgTemp = (temperatures.reduce((sum, t) => sum + t, 0) / temperatures.length).toFixed(2);
         document.getElementById("tempPromedio").textContent = avgTemp;
+        let minTemp = Math.min(...temperatures);
+        document.getElementById("tempMinLeft").textContent = minTemp.toFixed(2);
+        let maxTemp = Math.max(...temperatures);
+        document.getElementById("tempMaxLeft").textContent = maxTemp.toFixed(2);
     }
 }
 
