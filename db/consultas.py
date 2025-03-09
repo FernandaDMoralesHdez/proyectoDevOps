@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = "temperaturas.db"
+DB_NAME = "db/temperaturas.db"
 
 def ver_registros():
     """Muestra todos los registros de temperatura almacenados."""
