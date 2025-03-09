@@ -67,6 +67,7 @@ function fetchTemperatures() {
         });
 
         updateDisplay();
+        //Actualizar la gráfica
         chart.data.labels = timestamps;
         chart.data.datasets[0].data = temperatures;
         chart.update();
