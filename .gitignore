@@ -1,6 +1,7 @@
 db/temperaturas.db
-\temperaturas.db-journal
+db/temperaturas.db-journal
 __pycache__/
 *.pyc
+
 
 
