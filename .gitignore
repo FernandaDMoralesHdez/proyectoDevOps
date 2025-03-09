@@ -2,3 +2,5 @@
 \temperatures.db-journal
 __pycache__/
 *.pyc
+db/temperaturas.db
+

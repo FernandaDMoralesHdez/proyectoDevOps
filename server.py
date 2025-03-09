@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import time
 import random
@@ -23,7 +23,7 @@ def get_temperatures():
 
 @app.route('/')
 def home():
-    return "Servidor en funcionamiento. Visita http://127.0.0.1:5000/api/temperatures para ver los datos :)"
+    return send_from_directory('frontend', 'index.html') #"Servidor en funcionamiento. Visita http://127.0.0.1:5000/api/temperatures para ver los datos :)"
 
 if __name__ == '__main__':
     init_db()  # Asegurar que la BD y tabla existen antes de iniciar Flask
