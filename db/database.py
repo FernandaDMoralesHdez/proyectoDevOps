@@ -1,7 +1,7 @@
 import sqlite3
 import time
 
-DB_NAME = "temperaturas.db"
+DB_NAME = "db/temperaturas.db"
 
 def init_db():
     """Crea la base de datos y la tabla si no existen."""
