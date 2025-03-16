@@ -24,7 +24,7 @@ def insert_temperature(temp):
         cursor.execute("INSERT INTO registros (timestamp, temperature) VALUES (?, ?)", (timestamp, temp))
         conn.commit()
 
-def get_last_temperatures(limit=50):
+def get_last_temperatures(limit=30):
     """Recupera los últimos registros de temperatura."""
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
