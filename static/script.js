@@ -47,8 +47,12 @@ const chart = new Chart(ctx, {
 
 // Obtener datos desde el backend Flask
 function fetchTemperatures() {
-    if (!isRunning) return;  // No hacer fetch si está pausado
+    if (!isRunning) {
+        console.log("Simulación pausada, no se obtienen datos");
+        return;  // No hacer fetch si está pausado
+    }
 
+    console.log("Obteniendo datos...");
     fetch('http://127.0.0.1:5000/api/temperatures')
     .then(response => response.json())
     .then(data => {
@@ -57,22 +61,69 @@ function fetchTemperatures() {
             return;
         }
 
+        console.log("Datos recibidos:", data.length);
+        
         // Limpiar arrays
         temperatures.length = 0;
         timestamps.length = 0;
 
-        data.forEach(item => {
+        // Limitar a los últimos 15 puntos para mejor visualización
+        const limitedData = data.slice(-15);
+        
+        limitedData.forEach(item => {
             temperatures.push(item.temperature);
             timestamps.push(item.timestamp);
+            // Verificar si hay temperaturas críticas
+            checkCriticalTemperature(item.temperature, item.timestamp);
         });
 
         updateDisplay();
         //Actualizar la gráfica
         chart.data.labels = timestamps;
         chart.data.datasets[0].data = temperatures;
+        chart.data.datasets[0].pointBackgroundColor = temperatures.map(temp => getPointColor(temp));
+        chart.data.datasets[0].pointRadius = temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3);
         chart.update();
     })
     .catch(error => console.error('Error al obtener temperaturas:', error));
+}
+
+// Función para obtener y mostrar la temperatura promedio de las últimas 24h
+function fetchAverageTemperature() {
+    if (!isRunning) return;
+    
+    fetch('http://127.0.0.1:5000/api/metrics/average_temperature')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("tempPromedio24h").textContent = data.average_temperature;
+    })
+    .catch(error => console.error('Error al obtener temperatura promedio:', error));
+}
+
+// Función para obtener y mostrar las temperatura extremas de las últimas 24h
+function fetchTemperatureExtremes() {
+    if (!isRunning) return;
+    
+    fetch('http://127.0.0.1:5000/api/metrics/temperature_extremes')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("tempMax24h").textContent = data.max_temperature;
+        document.getElementById("tempMin24h").textContent = data.min_temperature;
+    })
+    .catch(error => console.error('Error al obtener temperaturas extremas:', error));
+}
+
+function fetchAnomalyCount() {
+    if (!isRunning) return;
+    
+    fetch('http://127.0.0.1:5000/api/metrics/anomaly_count')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("highTempAlerts").textContent = data.high_temperature_alerts;
+        document.getElementById("lowTempAlerts").textContent = data.low_temperature_alerts;
+        document.getElementById("totalAlerts").textContent = data.total_alerts;
+    })
+    .catch(error => console.error('Error al obtener conteo de anomalías:', error));
 }
 
 // Mostrar la temperatura actual y el promedio
@@ -92,7 +143,13 @@ function updateDisplay() {
 // Inicia la consulta de datos
 function startFetching() {
     fetchTemperatures();  // Ejecuta la primera consulta de inmediato
-    interval = setInterval(fetchTemperatures, 2000);
+    fetchAverageTemperature();
+    fetchTemperatureExtremes();
+    fetchAnomalyCount();
+    interval = setInterval(() => {
+        fetchTemperatures();
+        fetchAverageTemperature();
+    }, 10000); //Antes 2000
 }
 
 // Botón para pausar/reanudar la consulta
@@ -100,9 +157,11 @@ document.getElementById("toggleSimulation").addEventListener("click", function (
     if (isRunning) {
         clearInterval(interval);
         this.textContent = "Reanudar";
+        console.log("Simulación pausada");
     } else {
         startFetching();
         this.textContent = "Pausar";
+        console.log("Simulación reanudada");
     }
     isRunning = !isRunning;
 });
@@ -197,36 +256,6 @@ function notifyNewAlert() {
     document.getElementById("alertIndicator").classList.remove("hidden");
 }
 
-// Integrar alertas en la lógica de actualización de datos
-function fetchTemperatures() {
-    if (!isRunning) return;  // No hacer fetch si está pausado
 
-    fetch('http://127.0.0.1:5000/api/temperatures')
-    .then(response => response.json())
-    .then(data => {
-        if (data.length === 0) {
-            console.log("No hay datos disponibles aún.");
-            return;
-        }
-
-        temperatures.length = 0;
-        timestamps.length = 0;
-
-        data.forEach(item => {
-            temperatures.push(item.temperature);
-            timestamps.push(item.timestamp);
-            checkCriticalTemperature(item.temperature, item.timestamp); // Revisar alertas
-        });
-
-        updateDisplay();
-
-        // Actualizar las propiedades dinámicas de la gráfica
-        chart.data.datasets[0].data = temperatures;
-        chart.data.datasets[0].pointBackgroundColor = temperatures.map(temp => getPointColor(temp));
-        chart.data.datasets[0].pointRadius = temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3);
-        chart.update(); 
-    })
-    .catch(error => console.error('Error al obtener temperaturas:', error));
-}
 
 

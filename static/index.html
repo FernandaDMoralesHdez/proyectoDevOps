@@ -4,15 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Temperatura</title>
-    <link rel="stylesheet" href="frontend/styles.css"> <!-- Enlace al CSS -->
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Enlace al CSS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
 
     <!-- Sección del título y subtítulo -->
     <header class="dashboard-header">
-        <h2>Dashboard</h2>
-        <p>Consulta la temperatura del agua en tiempo real</p>
+        <div class="header-content">
+            <div class="title-section">
+                <h2>Dashboard</h2>
+                <p>Consulta la temperatura del agua en tiempo real</p>
+            </div>
+            <div class="metrics-icons">
+                <div class="metric-icon">
+                    <span class="icon">📅</span>
+                    <div class="metric-popup">
+                        <h4>T.ª Promedio 24h</h4>
+                        <span id="tempPromedio24h">--</span>°C
+                    </div>
+                </div>
+                <div class="metric-icon">
+                    <span class="icon">📊</span>
+                    <div class="metric-popup">
+                        <h4>T.ª Extremas 24h</h4>
+                        <p>Máx: <span id="tempMax24h">--</span>°C</p>
+                        <p>Mín: <span id="tempMin24h">--</span>°C</p>
+                    </div>
+                </div>
+                <div class="metric-icon">
+                    <span class="icon">⚠️</span>
+                    <div class="metric-popup">
+                        <h4>Alertas 24h</h4>
+                        <p>Altas: <span id="highTempAlerts">--</span></p>
+                        <p>Bajas: <span id="lowTempAlerts">--</span></p>
+                        <p class="total-alerts">Total: <span id="totalAlerts">--</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="dashboard">
@@ -22,11 +52,11 @@
     <aside class="left-panel">
         <div class="info-box">
             <span class="icon" style="color: blue;">❄</span>
-            <span>Temp. Mínima: <span id="tempMinLeft">--</span>°C</span>
+            <span>T.ª Mín. Actual: <span id="tempMinLeft">--</span>°C</span>
         </div>
         <div class="info-box">
             <span class="icon" style="color: red;">🔥</span>
-            <span>Temp. Máxima: <span id="tempMaxLeft">--</span>°C</span>
+            <span>T.ª Máx. Actual: <span id="tempMaxLeft">--</span>°C</span>
         </div>
         
     </aside>
@@ -58,11 +88,11 @@
         
             <div class="info-box">
                 <span class="icon">🌡</span>
-                <span>Temperatura actual: <span id="tempActual">--</span>°C</span>
+                <span>T.ª Actual: <span id="tempActual">--</span>°C</span>
             </div>
             <div class="info-box">
                 <span class="icon">📊</span>
-                <span>Promedio: <span id="tempPromedio">--</span>°C</span>
+                <span>Promedio actual: <span id="tempPromedio">--</span>°C</span>
             </div>
         </aside>
         
@@ -75,6 +105,6 @@
     </footer>
 
     <!-- Script para manejar la simulación y exportación -->
-    <script src="frontend/script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
