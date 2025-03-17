@@ -5,30 +5,10 @@ import random
 import threading
 from db.database import init_db, insert_temperature, get_last_temperatures # Importar el módulo database.py
 from api.metrics import get_average_temperature, get_temperature_extremes, get_anomaly_count  # Importar las funciones de métricas
+from api.routes import metrics_bp  # Importar el blueprint de métricas
 
 app = Flask(__name__)
 CORS(app)  # Permitir solicitudes desde el frontend
-
-# Create blueprint for metrics
-metrics_bp = Blueprint('metrics', __name__)
-
-@metrics_bp.route('/api/metrics/average_temperature', methods=['GET'])
-def average_temperature():
-    """Ruta para obtener la temperatura promedio de las últimas 24 horas."""
-    avg_temp = get_average_temperature()
-    return jsonify({"average_temperature": avg_temp})
-
-@metrics_bp.route('/api/metrics/temperature_extremes', methods=['GET'])
-def temperature_extremes():
-    """Ruta para obtener las temperaturas extremas de las últimas 24 horas."""
-    extremes = get_temperature_extremes()
-    return jsonify(extremes)
-
-@metrics_bp.route('/api/metrics/anomaly_count', methods=['GET'])
-def anomaly_count():
-    """Ruta para obtener el conteo de anomalías en las últimas 24 horas."""
-    counts = get_anomaly_count()
-    return jsonify(counts)
 
 # Register the blueprint
 app.register_blueprint(metrics_bp)
