@@ -13,9 +13,11 @@ jobs:
     - name: Copy static files to root
       run: |
         cp -r static/* .
+        ls -la  # This will help us debug what files are being copied
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: .
+        enable_jekyll: false
