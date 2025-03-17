@@ -1,0 +1,256 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f8f8f8;
+}
+
+.dashboard-header {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-bottom: 2px solid #ddd;
+}
+
+.dashboard-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #040c14;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.dashboard {
+    display: flex;
+    height: calc(100% - 50px);
+    padding: 20px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graph-container {
+    background: #ddd;
+    width: 80%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggleSimulation {
+    margin-top: 20px;
+    padding: 10px;
+    background: #032547;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#toggleSimulation:hover {
+    background: #03458b;
+}
+
+.info-panel {
+    width: 20%;
+    background: white;
+    padding: 10px;
+    border-left: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.button-group button {
+    padding: 10px;
+    font-size: 14px;
+    background: #032547;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button-group button:hover {
+    background: #03458b;
+}
+
+.info-box {
+    margin-bottom: 10px;
+    padding: 15px;
+    background: #fff3f3;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    background: #ccc;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#alertContainer {
+    background: #fff8e1;
+    padding: 10px;
+    border: 1px solid #ff9800;
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#alertList {
+    list-style: none;
+    padding: 0;
+}
+
+#alertList li {
+    font-size: 14px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.alert-indicator {
+    color: red;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.alert-indicator.hidden {
+    display: none;
+}
+
+.left-panel {
+    width: 15%;
+    background: white;
+    padding: 10px;
+    border-right: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-panel .info-box {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f0f8ff;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background: #032547;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.metric-popup p {
+    margin: 8px 0;
+    font-size: 0.9em;
+}
+
+.metric-popup small {
+    display: block;
+    color: #666;
+    font-size: 0.8em;
+    margin-top: 8px;
+}
+
+.metrics-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.metric-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.metric-icon .icon {
+    font-size: 1.5em;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.metric-icon:hover .icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.metric-popup {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.metric-icon:hover .metric-popup {
+    display: block;
+}
+
+.metric-popup h4 {
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+.total-alerts {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+}
+
+.metric-icon:last-child .metric-popup {
+    min-width: 180px;
+}
+

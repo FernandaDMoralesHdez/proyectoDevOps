@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Temperatura</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Enlace al CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+</head>
+<body>
+
+    <!-- Sección del título y subtítulo -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="title-section">
+                <h2>Dashboard</h2>
+                <p>Consulta la temperatura del agua en tiempo real</p>
+            </div>
+            <div class="metrics-icons">
+                <div class="metric-icon">
+                    <span class="icon">📅</span>
+                    <div class="metric-popup">
+                        <h4>T.ª Promedio 24h</h4>
+                        <span id="tempPromedio24h">--</span>°C
+                    </div>
+                </div>
+                <div class="metric-icon">
+                    <span class="icon">📊</span>
+                    <div class="metric-popup">
+                        <h4>T.ª Extremas 24h</h4>
+                        <p>Máx: <span id="tempMax24h">--</span>°C</p>
+                        <p>Mín: <span id="tempMin24h">--</span>°C</p>
+                    </div>
+                </div>
+                <div class="metric-icon">
+                    <span class="icon">⚠️</span>
+                    <div class="metric-popup">
+                        <h4>Alertas 24h</h4>
+                        <p>Altas: <span id="highTempAlerts">--</span></p>
+                        <p>Bajas: <span id="lowTempAlerts">--</span></p>
+                        <p class="total-alerts">Total: <span id="totalAlerts">--</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+
+
+        <!-- Panel lateral izquierdo -->
+    <aside class="left-panel">
+        <div class="info-box">
+            <span class="icon" style="color: blue;">❄</span>
+            <span>T.ª Mín. Actual: <span id="tempMinLeft">--</span>°C</span>
+        </div>
+        <div class="info-box">
+            <span class="icon" style="color: red;">🔥</span>
+            <span>T.ª Máx. Actual: <span id="tempMaxLeft">--</span>°C</span>
+        </div>
+        
+    </aside>
+
+        
+        <!-- Contenedor principal con la gráfica y botón de Pausar/Reanudar simulación -->
+        <div class="main-content">
+            <div class="graph-container">
+                <canvas id="temperatureChart"></canvas> <!-- Gráfica de temperatura -->
+            </div>
+
+            <button id="toggleSimulation">Pausar</button> <!-- Botón -->
+        </div>
+
+        <!-- Panel lateral derecho con botones y datos procesados (Promedio)-->
+        <aside class="info-panel">
+            <div class="button-group">
+                <button id="exportJSON">Exportar JSON</button>
+                <button id="exportCSV">Exportar CSV</button>
+                <button id="viewAlerts">
+                    Ver alertas <span id="alertIndicator" class="alert-indicator hidden">🔴</span>
+                </button>
+            </div>
+        
+            <div id="alertContainer" class="hidden">
+                <h4>Historial de alertas</h4>
+                <ul id="alertList"></ul>
+            </div>
+        
+            <div class="info-box">
+                <span class="icon">🌡</span>
+                <span>T.ª Actual: <span id="tempActual">--</span>°C</span>
+            </div>
+            <div class="info-box">
+                <span class="icon">📊</span>
+                <span>Promedio actual: <span id="tempPromedio">--</span>°C</span>
+            </div>
+        </aside>
+        
+
+    </div>
+
+    <footer class="footer">
+        <p>Proyecto de Monitoreo de Temperatura del Agua - Simulación con Python y Visualización en Web.</p>
+        <p>Desarrollado por <strong>Fernanda Morales</strong></p>
+    </footer>
+
+    <!-- Script para manejar la simulación y exportación -->
+    <script src="/static/script.js"></script>
+</body>
+</html>
