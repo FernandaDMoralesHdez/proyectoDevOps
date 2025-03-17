@@ -23,6 +23,30 @@ jobs:
         pip install pytest pytest-cov flake8
         pip install flask flask-cors
     
+    - name: Initialize Database
+      run: |
+        mkdir -p db
+        python -c "
+        from db.database import init_db, insert_temperature
+        from datetime import datetime, timedelta
+        
+        # Create empty database
+        init_db()
+        
+        # Add test temperatures (like putting toy thermometers in the box)
+        test_temps = [
+            25.5,  # Normal temperature
+            38.0,  # High temperature
+            22.0,  # Low temperature
+            30.0,  # Normal temperature
+            35.5   # High-ish temperature
+        ]
+        
+        # Insert each temperature
+        for temp in test_temps:
+            insert_temperature(temp)
+        "
+    
     - name: Run tests with coverage
       run: |
         pytest tests/ --cov=api --cov-report=xml
