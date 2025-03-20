@@ -1,0 +1,222 @@
+{"timestamp": "2025-03-18T18:15:11.415002", "level": "INFO", "message": "Iniciando c\u00e1lculo de temperatura promedio de \u00faltimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:15:11.416624", "level": "INFO", "message": "Obteniendo temperaturas extremas de \u00faltimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:15:11.417634", "level": "INFO", "message": "Calculando conteo de anomal\u00edas en \u00faltimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:15:11.418896", "level": "INFO", "message": "Temperatura promedio calculada: 28.76\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:15:11.421346", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:15:11.424549", "level": "WARNING", "message": "Se encontraron 26 anomal\u00edas: 9 altas, 17 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:16:11.429186", "level": "INFO", "message": "Iniciando c\u00e1lculo de temperatura promedio de \u00faltimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:16:11.429186", "level": "INFO", "message": "Temperatura promedio calculada: 29.0\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:16:11.435139", "level": "INFO", "message": "Obteniendo temperaturas extremas de \u00faltimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:16:11.437910", "level": "INFO", "message": "Calculando conteo de anomal\u00edas en \u00faltimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:16:11.440333", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:16:11.441040", "level": "WARNING", "message": "Se encontraron 31 anomal\u00edas: 12 altas, 19 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:13.352326", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:13.366942", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:13.367956", "level": "INFO", "message": "Temperatura promedio calculada: 29.06\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:13.374165", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:13.377165", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:13.379691", "level": "WARNING", "message": "Se encontraron 34 anomalias: 12 altas, 22 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:33.097884", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:33.101341", "level": "INFO", "message": "Temperatura promedio calculada: 29.35\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:33.113321", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:33.124781", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:33.127818", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:33.128812", "level": "WARNING", "message": "Se encontraron 38 anomalias: 15 altas, 23 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:43.081662", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:43.083458", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:43.083458", "level": "INFO", "message": "Temperatura promedio calculada: 29.46\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:43.083458", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:43.088584", "level": "WARNING", "message": "Se encontraron 39 anomalias: 16 altas, 23 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:43.090593", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:49.875314", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:49.878315", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:49.878315", "level": "INFO", "message": "Temperatura promedio calculada: 29.39\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:49.881811", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:49.882812", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:49.888131", "level": "WARNING", "message": "Se encontraron 40 anomalias: 16 altas, 24 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:53.092306", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:53.094969", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:53.097794", "level": "INFO", "message": "Temperatura promedio calculada: 29.4\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:53.097794", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:53.099239", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:53.100751", "level": "WARNING", "message": "Se encontraron 40 anomalias: 16 altas, 24 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:54.877261", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:54.877261", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:54.877261", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:23:54.877261", "level": "INFO", "message": "Temperatura promedio calculada: 29.4\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:23:54.881540", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:23:54.883319", "level": "WARNING", "message": "Se encontraron 40 anomalias: 16 altas, 24 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:24:03.084614", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:24:03.084614", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:24:03.084614", "level": "INFO", "message": "Temperatura promedio calculada: 29.35\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-18T18:24:03.089873", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-18T18:24:03.091727", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-18T18:24:03.091727", "level": "WARNING", "message": "Se encontraron 43 anomalias: 17 altas, 26 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:02:48.056650", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:02:48.072085", "level": "INFO", "message": "Temperatura promedio calculada: 29.47\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:02:48.079416", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:02:48.082232", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:02:48.106575", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:02:48.111098", "level": "WARNING", "message": "Se encontraron 44 anomalias: 18 altas, 26 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:02:53.365095", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:02:53.366703", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:02:53.368858", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:02:53.370603", "level": "INFO", "message": "Temperatura promedio calculada: 29.51\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:02:53.376526", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:02:53.377913", "level": "WARNING", "message": "Se encontraron 44 anomalias: 18 altas, 26 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:03:03.059179", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:03:03.059179", "level": "INFO", "message": "Temperatura promedio calculada: 29.46\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:03:03.074217", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:03:03.074217", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:03:03.081033", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:03:03.083155", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:03.401165", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:03.414329", "level": "INFO", "message": "Temperatura promedio calculada: 29.44\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:03.416504", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:03.418987", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:03.419999", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:03.422345", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:03.804010", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:03.807676", "level": "INFO", "message": "Temperatura promedio calculada: 29.44\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:03.808210", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:03.808736", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:03.808736", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:03.834481", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:11.901726", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:11.906856", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:11.907867", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:11.910249", "level": "INFO", "message": "Temperatura promedio calculada: 29.44\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:11.911481", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:11.914535", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:13.057461", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:13.057461", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:13.060647", "level": "INFO", "message": "Temperatura promedio calculada: 29.44\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:13.066304", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:13.067684", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:13.069731", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:23.353819", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:23.358021", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:23.358021", "level": "INFO", "message": "Temperatura promedio calculada: 29.48\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:23.362811", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:23.363834", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:23.365232", "level": "WARNING", "message": "Se encontraron 46 anomalias: 18 altas, 28 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:33.347222", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:33.347222", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:21:33.349688", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:33.351193", "level": "WARNING", "message": "Se encontraron 48 anomalias: 18 altas, 30 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:21:33.356875", "level": "INFO", "message": "Temperatura promedio calculada: 29.42\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:21:33.358518", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:22:46.471312", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:22:46.474644", "level": "INFO", "message": "Temperatura promedio calculada: 29.5\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:22:46.474644", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:22:46.490902", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:22:46.490902", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:22:46.495791", "level": "WARNING", "message": "Se encontraron 50 anomalias: 20 altas, 30 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:22:46.992035", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:22:46.993540", "level": "INFO", "message": "Temperatura promedio calculada: 29.56\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-19T04:22:46.993540", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:22:47.015569", "level": "INFO", "message": "Temperaturas extremas - Max: 39.85\u00b0C, Min: 20.05\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-19T04:22:47.016771", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-19T04:22:47.020369", "level": "WARNING", "message": "Se encontraron 50 anomalias: 20 altas, 30 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:44.752387", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:44.755323", "level": "INFO", "message": "Temperatura promedio calculada: 30.45\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:44.755323", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:44.778870", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:44.778870", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:44.782380", "level": "WARNING", "message": "Se encontraron 9 anomalias: 3 altas, 6 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:45.813303", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:45.814931", "level": "INFO", "message": "Temperatura promedio calculada: 30.55\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:45.816440", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:45.825485", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:45.827061", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:45.830564", "level": "WARNING", "message": "Se encontraron 10 anomalias: 3 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:49.427336", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:49.430934", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:49.430934", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:49.435980", "level": "WARNING", "message": "Se encontraron 10 anomalias: 3 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:49.448221", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:49.448221", "level": "INFO", "message": "Temperatura promedio calculada: 30.3\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:54.489233", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:54.495666", "level": "INFO", "message": "Temperatura promedio calculada: 30.69\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T01:57:54.546858", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:54.546858", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T01:57:54.597087", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T01:57:54.597087", "level": "WARNING", "message": "Se encontraron 11 anomalias: 4 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:01.904745", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:01.908132", "level": "INFO", "message": "Temperatura promedio calculada: 31.06\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:01.909245", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:01.919858", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:01.919858", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:01.924534", "level": "WARNING", "message": "Se encontraron 15 anomalias: 8 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:03.196278", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:03.199701", "level": "INFO", "message": "Temperatura promedio calculada: 31.25\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:03.200908", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:03.202920", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:03.204427", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:03.205619", "level": "WARNING", "message": "Se encontraron 15 anomalias: 8 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:10.304884", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:10.304884", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:10.311243", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:10.311243", "level": "INFO", "message": "Temperatura promedio calculada: 31.22\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:10.318113", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:10.323215", "level": "WARNING", "message": "Se encontraron 16 anomalias: 9 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:14.585747", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:14.590767", "level": "INFO", "message": "Temperatura promedio calculada: 31.18\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:14.590767", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:14.598435", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:14.603676", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:14.605897", "level": "WARNING", "message": "Se encontraron 16 anomalias: 9 altas, 7 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:20.314904", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:20.319406", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:20.321479", "level": "INFO", "message": "Temperatura promedio calculada: 30.96\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T02:56:20.323222", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T02:56:20.326132", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T02:56:20.330716", "level": "WARNING", "message": "Se encontraron 17 anomalias: 9 altas, 8 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:02:34.776648", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:02:34.782678", "level": "INFO", "message": "Temperatura promedio calculada: 30.96\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:02:34.782678", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:02:34.786283", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:02:34.786283", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:02:34.789471", "level": "WARNING", "message": "Se encontraron 18 anomalias: 9 altas, 9 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:02:35.621286", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:02:35.628519", "level": "INFO", "message": "Temperatura promedio calculada: 30.67\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:02:35.629796", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:02:35.631704", "level": "INFO", "message": "Temperaturas extremas - Max: 39.82\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:02:35.632762", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:02:35.635930", "level": "WARNING", "message": "Se encontraron 18 anomalias: 9 altas, 9 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:27.994729", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:27.996279", "level": "INFO", "message": "Temperatura promedio calculada: 30.68\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:27.996279", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:28.009680", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:28.010689", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:28.013935", "level": "WARNING", "message": "Se encontraron 20 anomalias: 10 altas, 10 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:28.523811", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:28.523811", "level": "INFO", "message": "Temperatura promedio calculada: 30.58\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:28.527810", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:28.554925", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:28.554925", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:28.558269", "level": "WARNING", "message": "Se encontraron 21 anomalias: 11 altas, 10 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:38.378034", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:38.381089", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:38.382088", "level": "INFO", "message": "Temperatura promedio calculada: 30.94\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:09:38.384257", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 21.04\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:09:38.387257", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:09:38.388261", "level": "WARNING", "message": "Se encontraron 22 anomalias: 12 altas, 10 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:09.983384", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:09.989807", "level": "INFO", "message": "Temperatura promedio calculada: 31.06\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:09.991149", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:10.009650", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 20.25\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:10.014024", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:10.016381", "level": "WARNING", "message": "Se encontraron 24 anomalias: 13 altas, 11 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:10.871059", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:10.872100", "level": "INFO", "message": "Temperatura promedio calculada: 30.88\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:10.872100", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:10.905485", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 20.25\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:10.905485", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:10.908488", "level": "WARNING", "message": "Se encontraron 24 anomalias: 13 altas, 11 bajas", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:24.437477", "level": "INFO", "message": "Iniciando calculo de temperatura promedio de ultimas 24h", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:24.439505", "level": "INFO", "message": "Temperatura promedio calculada: 30.58\u00b0C", "module": "metrics", "function": "get_average_temperature"}
+{"timestamp": "2025-03-20T03:13:24.452687", "level": "INFO", "message": "Obteniendo temperaturas extremas de ultimas 24h", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:24.467119", "level": "INFO", "message": "Temperaturas extremas - Max: 39.89\u00b0C, Min: 20.25\u00b0C", "module": "metrics", "function": "get_temperature_extremes"}
+{"timestamp": "2025-03-20T03:13:24.473980", "level": "INFO", "message": "Calculando conteo de anomalias ultimas 24h", "module": "metrics", "function": "get_anomaly_count"}
+{"timestamp": "2025-03-20T03:13:24.475722", "level": "WARNING", "message": "Se encontraron 25 anomalias: 13 altas, 12 bajas", "module": "metrics", "function": "get_anomaly_count"}

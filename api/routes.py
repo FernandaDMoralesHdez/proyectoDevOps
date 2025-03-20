@@ -1,7 +1,24 @@
-from flask import Blueprint, jsonify
+import os
+from flask import Blueprint, jsonify, current_app
 from api.metrics import get_average_temperature, get_temperature_extremes, get_anomaly_count
+from monitoring.metrics_monitor import MetricsMonitor
 
 metrics_bp = Blueprint('metrics', __name__)
+
+@metrics_bp.route('/metrics/history', methods=['GET'])
+def get_metrics_history():
+    monitor = current_app.monitor  # Get monitor instance from Flask app
+    history = monitor.get_metrics_history()
+    return jsonify(history)
+
+@metrics_bp.route('/metrics/report', methods=['GET'])
+def generate_report():
+    monitor = current_app.monitor
+    # Create reports directory inside monitoring folder
+    reports_dir = 'monitoring/reports'
+    os.makedirs(reports_dir, exist_ok=True)
+    monitor.export_metrics_report(f'{reports_dir}/metrics_report.json')
+    return jsonify({"message": "Report generated successfully"})    
 
 @metrics_bp.route('/api/metrics/average_temperature', methods=['GET'])
 def average_temperature():

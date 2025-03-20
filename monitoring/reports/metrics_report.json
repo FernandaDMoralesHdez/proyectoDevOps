@@ -1,0 +1,68 @@
+{
+  "generated_at": "2025-03-19T21:13:17.806789",
+  "metrics_history": [
+    {
+      "timestamp": "2025-03-19 21:13:10",
+      "average_temperature": 30.88,
+      "max_temperature": 39.89,
+      "min_temperature": 20.25,
+      "anomaly_count": 24
+    },
+    {
+      "timestamp": "2025-03-19 21:13:09",
+      "average_temperature": 31.38,
+      "max_temperature": 39.89,
+      "min_temperature": 20.25,
+      "anomaly_count": 15
+    },
+    {
+      "timestamp": "2025-03-19 21:09:28",
+      "average_temperature": 30.58,
+      "max_temperature": 39.89,
+      "min_temperature": 21.04,
+      "anomaly_count": 21
+    },
+    {
+      "timestamp": "2025-03-19 21:02:35",
+      "average_temperature": 30.67,
+      "max_temperature": 39.82,
+      "min_temperature": 21.04,
+      "anomaly_count": 18
+    },
+    {
+      "timestamp": "2025-03-19 21:02:34",
+      "average_temperature": 31.8,
+      "max_temperature": 39.89,
+      "min_temperature": 21.49,
+      "anomaly_count": 14
+    },
+    {
+      "timestamp": "2025-03-19 20:56:18",
+      "average_temperature": 31.94,
+      "max_temperature": 39.47,
+      "min_temperature": 21.53,
+      "anomaly_count": 8
+    },
+    {
+      "timestamp": "2025-03-19 20:56:03",
+      "average_temperature": 31.25,
+      "max_temperature": 39.82,
+      "min_temperature": 21.04,
+      "anomaly_count": 15
+    },
+    {
+      "timestamp": "2025-03-19 20:56:01",
+      "average_temperature": 31.06,
+      "max_temperature": 39.82,
+      "min_temperature": 21.04,
+      "anomaly_count": 15
+    },
+    {
+      "timestamp": "2025-03-19 19:57:45",
+      "average_temperature": 33.87,
+      "max_temperature": 39.17,
+      "min_temperature": 21.94,
+      "anomaly_count": 6
+    }
+  ]
+}
