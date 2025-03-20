@@ -5,6 +5,8 @@ let timestamps = [];
 
 // Inicializar la gráfica con Chart.js
 const ctx = document.getElementById("temperatureChart").getContext("2d");
+
+// Optimize chart configuration
 const chart = new Chart(ctx, {
     type: "line",
     data: {
@@ -16,6 +18,7 @@ const chart = new Chart(ctx, {
             backgroundColor: "rgba(236, 143, 213, 0.66)",
             borderWidth: 2,
             fill: true,
+            tension: 0.1, // Add smooth curves
             pointBackgroundColor: temperatures.map(temp => getPointColor(temp)), // Cambia color de puntos críticos
             pointRadius: temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3), // Agranda los puntos críticos
         }]
@@ -23,8 +26,14 @@ const chart = new Chart(ctx, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
+        animation: {
+            duration: 750 // Slower animation for smoother updates
+        },
         scales: {
-            x: { title: { display: true, text: "Tiempo" } },
+            x: { 
+                title: { display: true, text: "Tiempo" },
+                ticks: { maxTicksLimit: 10 } // Limit X-axis labels
+            },
             y: { 
                 title: { display: true, text: "Temperatura (°C)" }, 
                 suggestedMin: 15,
@@ -146,10 +155,15 @@ function startFetching() {
     fetchAverageTemperature();
     fetchTemperatureExtremes();
     fetchAnomalyCount();
+    
     interval = setInterval(() => {
         fetchTemperatures();
-        fetchAverageTemperature();
-    }, 10000); //Antes 2000
+        if (Date.now() % (2 * 5000) < 5000) {  // Update metrics every 10 seconds
+            fetchAverageTemperature();
+            fetchTemperatureExtremes();
+            fetchAnomalyCount();
+        }
+    }, 5000);
 }
 
 // Botón para pausar/reanudar la consulta
@@ -240,9 +254,18 @@ function checkCriticalTemperature(temp, timestamp) {
 }
 
 // Función para actualizar la lista de alertas en pantalla
+// Limite alert list size
 function updateAlertList() {
+    // Keep only last 10 alerts
+    if (alertList.length > 10) {
+        alertList = alertList.slice(-10);
+    }
+
+    // Reverse the array so the most recent alert is at the top
+    alertList = alertList.reverse(); 
+    
     const alertListElement = document.getElementById("alertList");
-    alertListElement.innerHTML = ""; // Limpia la lista
+    alertListElement.innerHTML = "";
     alertList.forEach(alert => {
         const li = document.createElement("li");
         li.textContent = alert;
