@@ -92,10 +92,10 @@ def ver_monitoring_metrics():
         """)
         min_date, max_date = cursor.fetchone()
         
-        print("\n=== Monitoring Database Summary ===")
+        print("\n=== Resumen del monitoreo 24 hr ===")
         print(f"Total records: {total_records}")
         print(f"Date range: {min_date} to {max_date}")
-        print("\n=== Monitoring Metrics History ===")
+        print("\n=== Historial de métricas de monitoreo ===")
         print("Timestamp           | Avg Temp | Max Temp | Min Temp | Anomalies")
         print("-" * 65)
         
@@ -121,7 +121,7 @@ def ver_metricas_por_rango():
             ORDER BY timestamp DESC
         """, (start_date, end_date))
         
-        print(f"\n=== Metrics from {start_date} to {end_date} ===")
+        print(f"\n=== Métricas {start_date} - {end_date} ===")
         print("Timestamp           | Avg Temp | Max Temp | Min Temp | Anomalies")
         print("-" * 65)
         for row in cursor.fetchall():
@@ -133,5 +133,5 @@ if __name__ == "__main__":
     ver_promedio_24h()
     ver_temperaturas_24h()
     ver_promedio_24h()'''
-    ver_monitoring_metrics()
+    #ver_monitoring_metrics()
     ver_metricas_por_rango()

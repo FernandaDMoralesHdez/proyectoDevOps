@@ -95,8 +95,35 @@
                 <span>Promedio actual: <span id="tempPromedio">--</span>°C</span>
             </div>
         </aside>
-        
+    </div>
 
+    <div class="monitoring-section">
+        <h3>System Monitoring</h3>
+        <div class="metrics-container">
+            <div class="metric-card">
+                <h4>Current Metrics</h4>
+                <div class="info-box">
+                    <span class="icon">📊</span>
+                    <span>Avg Temp: <span id="avg-temp">--</span>°C</span>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🔥</span>
+                    <span>Max Temp: <span id="max-temp">--</span>°C</span>
+                </div>
+                <div class="info-box">
+                    <span class="icon">❄</span>
+                    <span>Min Temp: <span id="min-temp">--</span>°C</span>
+                </div>
+                <div class="info-box">
+                    <span class="icon">⚠️</span>
+                    <span>Anomalies: <span id="anomalies">--</span></span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <h4>Historical Data</h4>
+                <div id="metrics-history"></div>
+            </div>
+        </div>
     </div>
 
     <footer class="footer">

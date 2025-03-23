@@ -155,6 +155,7 @@ function startFetching() {
     fetchAverageTemperature();
     fetchTemperatureExtremes();
     fetchAnomalyCount();
+    updateMetrics();
     
     interval = setInterval(() => {
         fetchTemperatures();
@@ -162,8 +163,36 @@ function startFetching() {
             fetchAverageTemperature();
             fetchTemperatureExtremes();
             fetchAnomalyCount();
+            updateMetrics();
         }
     }, 5000);
+}
+
+function updateMetrics() {
+    if (!isRunning) return;
+    
+    fetch('/metrics/history')
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                const latest = data[0];
+                document.getElementById('avg-temp').textContent = latest[1].toFixed(2);
+                document.getElementById('max-temp').textContent = latest[2].toFixed(2);
+                document.getElementById('min-temp').textContent = latest[3].toFixed(2);
+                document.getElementById('anomalies').textContent = latest[4];
+
+                // Display historical data
+                const historyHtml = data.slice(0, 5).map(metric => `
+                    <div class="history-item">
+                        <span class="timestamp">${metric[0]}</span>
+                        <span class="temp">Avg: ${metric[1].toFixed(2)}°C</span>
+                        <span class="anomalies">Anomalies: ${metric[4]}</span>
+                    </div>
+                `).join('');
+                document.getElementById('metrics-history').innerHTML = historyHtml;
+            }
+        })
+        .catch(error => console.error('Error fetching metrics:', error));
 }
 
 // Botón para pausar/reanudar la consulta
