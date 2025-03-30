@@ -229,16 +229,19 @@ function displayNoDataMessage() {
         metricsChart.destroy();
     }
 
-    ctx.canvas.style.height = '200px';
+    ctx.canvas.style.height = '150px';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '16px Arial';
+    ctx.font = '12px Arial';
     ctx.fillStyle = '#666';
-    ctx.fillText('No hay métricas disponibles para este día', ctx.canvas.width / 2, ctx.canvas.height / 2);
+    ctx.fillText('No hay métricas disponibles para este día u hora', ctx.canvas.width / 2, ctx.canvas.height / 2);
 }
 
 function displayMetricsChart(data) {
     const ctx = document.getElementById('metricsChart').getContext('2d');
+
+    // Sort data by timestamp in ascending order
+    data.sort((a, b) => new Date(a[0]) - new Date(b[0]));
     
     if (metricsChart) {
         metricsChart.destroy();
