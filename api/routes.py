@@ -37,3 +37,12 @@ def anomaly_count():
     """Ruta para obtener el conteo de anomalías en las últimas 24 horas."""
     counts = get_anomaly_count()
     return jsonify(counts)
+
+@metrics_bp.route('/api/metrics/<date>', methods=['GET'])
+def get_metrics_by_date(date):
+    """Ruta para obtener métricas de un día específico."""
+    monitor = current_app.monitor
+    start_date = f"{date} 00:00:00"
+    end_date = f"{date} 23:59:59"
+    metrics = monitor.get_metrics_by_range(start_date, end_date)
+    return jsonify(metrics)

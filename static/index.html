@@ -125,6 +125,18 @@
             </div>
         </div>
     </div>
+    <!-- Gráfica para consultar métricas -->
+    <div class="metrics-visualization">
+        <h3>Visualización de Métricas Históricas</h3>
+        <div class="date-selector">
+            <label for="metricsDate">Seleccionar fecha: </label>
+            <input type="date" id="metricsDate" />
+            <button onclick="fetchMetricsByDate()" class="metrics-btn">Ver métricas</button>
+        </div>
+        <div class="metrics-chart-container">
+            <canvas id="metricsChart"></canvas>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>Proyecto de Monitoreo de Temperatura del Agua - Simulación con Python y Visualización en Web.</p>

@@ -195,6 +195,78 @@ function updateMetrics() {
         .catch(error => console.error('Error fetching metrics:', error));
 }
 
+// Initialize metrics chart
+let metricsChart;
+
+function fetchMetricsByDate() {
+    const selectedDate = document.getElementById('metricsDate').value;
+    if (!selectedDate) {
+        alert('Por favor selecciona una fecha');
+        return;
+    }
+
+    fetch(`/api/metrics/${selectedDate}`)
+        .then(response => response.json())
+        .then(data => {
+            displayMetricsChart(data);
+        })
+        .catch(error => console.error('Error fetching metrics:', error));
+}
+
+function displayMetricsChart(data) {
+    const ctx = document.getElementById('metricsChart').getContext('2d');
+    
+    if (metricsChart) {
+        metricsChart.destroy();
+    }
+
+    metricsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(d => d[0].split(' ')[1]), // Show only time
+            datasets: [
+                {
+                    label: 'Temperatura Promedio',
+                    data: data.map(d => d[1]),
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Temperatura Máxima',
+                    data: data.map(d => d[2]),
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Temperatura Mínima',
+                    data: data.map(d => d[3]),
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Temperatura (°C)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Hora'
+                    }
+                }
+            }
+        }
+    });
+}
+
 // Botón para pausar/reanudar la consulta
 document.getElementById("toggleSimulation").addEventListener("click", function () {
     if (isRunning) {
