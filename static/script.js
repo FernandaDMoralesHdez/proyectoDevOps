@@ -200,17 +200,41 @@ let metricsChart;
 
 function fetchMetricsByDate() {
     const selectedDate = document.getElementById('metricsDate').value;
+    const selectedTime = document.getElementById('metricsTime').value;
+    
     if (!selectedDate) {
         alert('Por favor selecciona una fecha');
         return;
     }
 
-    fetch(`/api/metrics/${selectedDate}`)
+    fetch(`/api/metrics/${selectedDate}?time_range=${selectedTime}`)
         .then(response => response.json())
         .then(data => {
-            displayMetricsChart(data);
+            if (data.error) {
+                displayNoDataMessage();
+            } else {
+                displayMetricsChart(data);
+            }
         })
-        .catch(error => console.error('Error fetching metrics:', error));
+        .catch(error => {
+            console.error('Error fetching metrics:', error);
+            displayNoDataMessage();
+        });
+}
+
+function displayNoDataMessage() {
+    const ctx = document.getElementById('metricsChart').getContext('2d');
+    
+    if (metricsChart) {
+        metricsChart.destroy();
+    }
+
+    ctx.canvas.style.height = '200px';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '16px Arial';
+    ctx.fillStyle = '#666';
+    ctx.fillText('No hay métricas disponibles para este día', ctx.canvas.width / 2, ctx.canvas.height / 2);
 }
 
 function displayMetricsChart(data) {

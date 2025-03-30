@@ -1,7 +1,8 @@
 import os
-from flask import Blueprint, jsonify, current_app
+from flask import Blueprint, jsonify, current_app, request
 from api.metrics import get_average_temperature, get_temperature_extremes, get_anomaly_count
 from monitoring.metrics_monitor import MetricsMonitor
+from datetime import datetime
 
 metrics_bp = Blueprint('metrics', __name__)
 
@@ -40,9 +41,35 @@ def anomaly_count():
 
 @metrics_bp.route('/api/metrics/<date>', methods=['GET'])
 def get_metrics_by_date(date):
-    """Ruta para obtener métricas de un día específico."""
-    monitor = current_app.monitor
-    start_date = f"{date} 00:00:00"
-    end_date = f"{date} 23:59:59"
-    metrics = monitor.get_metrics_by_range(start_date, end_date)
-    return jsonify(metrics)
+    """Ruta para obtener métricas de un día específico con filtro de hora opcional."""
+    try:
+        # Validate date
+        date_obj = datetime.strptime(date, '%Y-%m-%d')
+        min_date = datetime.strptime('2025-03-19', '%Y-%m-%d')
+        if date_obj < min_date:
+            return jsonify({"error": "Fecha no válida"})
+
+        monitor = current_app.monitor
+        time_range = request.args.get('time_range', 'all')
+        
+        # Set time range based on selection
+        if time_range == 'all':
+            start_time = "00:00:00"
+            end_time = "23:59:59"
+        else:
+            hour = int(time_range)
+            start_time = f"{hour:02d}:00:00"
+            end_time = f"{(hour + 6):02d}:59:59"
+
+        start_date = f"{date} {start_time}"
+        end_date = f"{date} {end_time}"
+        
+        metrics = monitor.get_metrics_by_range(start_date, end_date)
+        
+        if not metrics:
+            return jsonify({"error": "No hay datos disponibles"})
+            
+        return jsonify(metrics)
+        
+    except ValueError:
+        return jsonify({"error": "Formato de fecha inválido"})

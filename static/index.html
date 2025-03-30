@@ -129,8 +129,16 @@
     <div class="metrics-visualization">
         <h3>Visualización de Métricas Históricas</h3>
         <div class="date-selector">
-            <label for="metricsDate">Seleccionar fecha: </label>
-            <input type="date" id="metricsDate" />
+            <label for="metricsDate">Fecha: </label>
+            <input type="date" id="metricsDate" min="2025-03-19" />
+            <label for="metricsTime">Hora: </label>
+            <select id="metricsTime">
+                <option value="all">Todo el día</option>
+                <option value="00">00:00 - 06:00</option>
+                <option value="06">06:00 - 12:00</option>
+                <option value="12">12:00 - 18:00</option>
+                <option value="18">18:00 - 24:00</option>
+            </select>
             <button onclick="fetchMetricsByDate()" class="metrics-btn">Ver métricas</button>
         </div>
         <div class="metrics-chart-container">
