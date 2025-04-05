@@ -1,107 +1,216 @@
+// Global variables
 let isRunning = true;
 let interval;
 let temperatures = [];
 let timestamps = [];
+let chart;
+let alertList = [];
+let hasNewAlert = false;
+let metricsChart;
 
-// Inicializar la gráfica con Chart.js
-const ctx = document.getElementById("temperatureChart").getContext("2d");
-
-// Optimize chart configuration
-const chart = new Chart(ctx, {
-    type: "line",
-    data: {
-        labels: timestamps,
-        datasets: [{
-            label: "Temperatura (°C)",
-            data: temperatures,
-            borderColor: "rgb(226, 105, 172)",
-            backgroundColor: "rgba(236, 143, 213, 0.66)",
-            borderWidth: 2,
-            fill: true,
-            tension: 0.1, // Add smooth curves
-            pointBackgroundColor: temperatures.map(temp => getPointColor(temp)), // Cambia color de puntos críticos
-            pointRadius: temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3), // Agranda los puntos críticos
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: {
-            duration: 750 // Slower animation for smoother updates
+// Chart initialization function
+function initializeCharts() {
+    const ctx = document.getElementById("temperatureChart").getContext("2d");
+    chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: timestamps,
+            datasets: [{
+                label: "Temperatura (°C)",
+                data: temperatures,
+                borderColor: "rgb(226, 105, 172)",
+                backgroundColor: "rgba(236, 143, 213, 0.66)",
+                borderWidth: 2,
+                fill: true,
+                tension: 0.1,
+                pointBackgroundColor: temperatures.map(temp => getPointColor(temp)),
+                pointRadius: temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3),
+            }]
         },
-        scales: {
-            x: { 
-                title: { display: true, text: "Tiempo" },
-                ticks: { maxTicksLimit: 10 } // Limit X-axis labels
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+                duration: 750
             },
-            y: { 
-                title: { display: true, text: "Temperatura (°C)" }, 
-                suggestedMin: 15,
-                suggestedMax: 40  
-            }
-        },
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        let temp = tooltipItem.raw;
-                        let symbol = temp >= 38 ? "🔥" : temp <= 22 ? "❄" : "";
-                        return ` ${symbol} ${temp}°C`;
+            scales: {
+                x: { 
+                    title: { display: true, text: "Tiempo" },
+                    ticks: { maxTicksLimit: 10 }
+                },
+                y: { 
+                    title: { display: true, text: "Temperatura (°C)" }, 
+                    suggestedMin: 15,
+                    suggestedMax: 40  
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            let temp = tooltipItem.raw;
+                            let symbol = temp >= 38 ? "🔥" : temp <= 22 ? "❄" : "";
+                            return ` ${symbol} ${temp}°C`;
+                        }
                     }
                 }
             }
         }
+    });
+}
+
+// Login functions
+function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            document.getElementById('loginForm').style.display = 'none';
+            document.querySelector('.dashboard-header').style.display = 'block';
+            document.querySelector('.dashboard').style.display = 'flex';
+            document.querySelector('.monitoring-section').style.display = 'block';
+            document.querySelector('.metrics-visualization').style.display = 'block';
+            initializeCharts();
+            startFetching();
+        } else {
+            alert('Login failed: Invalid credentials');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Login failed: Server error');
+    });
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    clearInterval(interval);
+    isRunning = false;
+    // Hide all elements
+    document.querySelector('.dashboard-header').style.display = 'none';
+    document.querySelector('.dashboard').style.display = 'none';
+    document.querySelector('.monitoring-section').style.display = 'none';
+    document.querySelector('.metrics-visualization').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+    // Clear data
+    temperatures = [];
+    timestamps = [];
+    if (chart) {
+        chart.data.labels = [];
+        chart.data.datasets[0].data = [];
+        chart.update();
+    }
+}
+
+// Authentication helper
+function fetchWithAuth(url, options = {}) {
+    const token = localStorage.getItem('token');
+    return fetch(url, {
+        ...options,
+        headers: {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`
+        }
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+    const dashboardHeader = document.querySelector('.dashboard-header');
+    const dashboard = document.querySelector('.dashboard');
+    const monitoringSection = document.querySelector('.monitoring-section');
+    const metricsVisualization = document.querySelector('.metrics-visualization');
+    const loginForm = document.getElementById('loginForm');
+
+    // Add event listeners
+    document.getElementById('logoutButton').addEventListener('click', logout);
+    document.getElementById("toggleSimulation").addEventListener("click", function () {
+        if (isRunning) {
+            clearInterval(interval);
+            this.textContent = "Reanudar";
+        } else {
+            startFetching();
+            this.textContent = "Pausar";
+        }
+        isRunning = !isRunning;
+    });
+    document.getElementById("exportJSON").addEventListener("click", exportToJSON);
+    document.getElementById("exportCSV").addEventListener("click", exportToCSV);
+    document.getElementById("viewAlerts").addEventListener("click", function () {
+        const alertContainer = document.getElementById("alertContainer");
+        alertContainer.classList.toggle("hidden");
+        if (!alertContainer.classList.contains("hidden")) {
+            hasNewAlert = false;
+            document.getElementById("alertIndicator").classList.add("hidden");
+        }
+    });
+
+    if (!token) {
+        dashboardHeader.style.display = 'none';
+        dashboard.style.display = 'none';
+        monitoringSection.style.display = 'none';
+        metricsVisualization.style.display = 'none';
+        loginForm.style.display = 'block';
+    } else {
+        dashboardHeader.style.display = 'block';
+        dashboard.style.display = 'flex';
+        monitoringSection.style.display = 'block';
+        metricsVisualization.style.display = 'block';
+        loginForm.style.display = 'none';
+        initializeCharts();
+        startFetching();
     }
 });
 
-// Obtener datos desde el backend Flask
+// Data fetching functions
 function fetchTemperatures() {
-    if (!isRunning) {
-        console.log("Simulación pausada, no se obtienen datos");
-        return;  // No hacer fetch si está pausado
-    }
+    if (!isRunning) return;
 
-    console.log("Obteniendo datos...");
-    fetch('http://127.0.0.1:5000/api/temperatures')
+    fetchWithAuth('http://127.0.0.1:5000/api/temperatures')
     .then(response => response.json())
     .then(data => {
-        if (data.length === 0) {
-            console.log("No hay datos disponibles aún.");
-            return;
-        }
-
-        console.log("Datos recibidos:", data.length);
+        if (data.length === 0) return;
         
-        // Limpiar arrays
         temperatures.length = 0;
         timestamps.length = 0;
-
-        // Limitar a los últimos 15 puntos para mejor visualización
-        const limitedData = data.slice(-15);
         
+        const limitedData = data.slice(-15);
         limitedData.forEach(item => {
             temperatures.push(item.temperature);
             timestamps.push(item.timestamp);
-            // Verificar si hay temperaturas críticas
             checkCriticalTemperature(item.temperature, item.timestamp);
         });
 
         updateDisplay();
-        //Actualizar la gráfica
-        chart.data.labels = timestamps;
-        chart.data.datasets[0].data = temperatures;
-        chart.data.datasets[0].pointBackgroundColor = temperatures.map(temp => getPointColor(temp));
-        chart.data.datasets[0].pointRadius = temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3);
-        chart.update();
+        updateChart();
     })
     .catch(error => console.error('Error al obtener temperaturas:', error));
 }
 
-// Función para obtener y mostrar la temperatura promedio de las últimas 24h
+function updateChart() {
+    if (!chart) return;
+    chart.data.labels = timestamps;
+    chart.data.datasets[0].data = temperatures;
+    chart.data.datasets[0].pointBackgroundColor = temperatures.map(temp => getPointColor(temp));
+    chart.data.datasets[0].pointRadius = temperatures.map(temp => temp >= 37 || temp <= 24 ? 7 : 3);
+    chart.update();
+}
+
 function fetchAverageTemperature() {
     if (!isRunning) return;
     
-    fetch('http://127.0.0.1:5000/api/metrics/average_temperature')
+    fetchWithAuth('http://127.0.0.1:5000/api/metrics/average_temperature')
     .then(response => response.json())
     .then(data => {
         document.getElementById("tempPromedio24h").textContent = data.average_temperature;
@@ -109,11 +218,10 @@ function fetchAverageTemperature() {
     .catch(error => console.error('Error al obtener temperatura promedio:', error));
 }
 
-// Función para obtener y mostrar las temperatura extremas de las últimas 24h
 function fetchTemperatureExtremes() {
     if (!isRunning) return;
     
-    fetch('http://127.0.0.1:5000/api/metrics/temperature_extremes')
+    fetchWithAuth('http://127.0.0.1:5000/api/metrics/temperature_extremes')
     .then(response => response.json())
     .then(data => {
         document.getElementById("tempMax24h").textContent = data.max_temperature;
@@ -125,7 +233,7 @@ function fetchTemperatureExtremes() {
 function fetchAnomalyCount() {
     if (!isRunning) return;
     
-    fetch('http://127.0.0.1:5000/api/metrics/anomaly_count')
+    fetchWithAuth('http://127.0.0.1:5000/api/metrics/anomaly_count')
     .then(response => response.json())
     .then(data => {
         document.getElementById("highTempAlerts").textContent = data.high_temperature_alerts;
@@ -135,7 +243,6 @@ function fetchAnomalyCount() {
     .catch(error => console.error('Error al obtener conteo de anomalías:', error));
 }
 
-// Mostrar la temperatura actual y el promedio
 function updateDisplay() {
     if (temperatures.length > 0) {
         let latestTemp = temperatures[temperatures.length - 1];
@@ -149,9 +256,8 @@ function updateDisplay() {
     }
 }
 
-// Inicia la consulta de datos
 function startFetching() {
-    fetchTemperatures();  // Ejecuta la primera consulta de inmediato
+    fetchTemperatures();
     fetchAverageTemperature();
     fetchTemperatureExtremes();
     fetchAnomalyCount();
@@ -159,7 +265,7 @@ function startFetching() {
     
     interval = setInterval(() => {
         fetchTemperatures();
-        if (Date.now() % (2 * 5000) < 5000) {  // Update metrics every 10 seconds
+        if (Date.now() % (2 * 5000) < 5000) {
             fetchAverageTemperature();
             fetchTemperatureExtremes();
             fetchAnomalyCount();
@@ -171,7 +277,7 @@ function startFetching() {
 function updateMetrics() {
     if (!isRunning) return;
     
-    fetch('/metrics/history')
+    fetchWithAuth('/metrics/history')
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
@@ -181,7 +287,6 @@ function updateMetrics() {
                 document.getElementById('min-temp').textContent = latest[3].toFixed(2);
                 document.getElementById('anomalies').textContent = latest[4];
 
-                // Display historical data
                 const historyHtml = data.slice(0, 5).map(metric => `
                     <div class="history-item">
                         <span class="timestamp">${metric[0]}</span>
@@ -195,9 +300,6 @@ function updateMetrics() {
         .catch(error => console.error('Error fetching metrics:', error));
 }
 
-// Initialize metrics chart
-let metricsChart;
-
 function fetchMetricsByDate() {
     const selectedDate = document.getElementById('metricsDate').value;
     const selectedTime = document.getElementById('metricsTime').value;
@@ -207,7 +309,7 @@ function fetchMetricsByDate() {
         return;
     }
 
-    fetch(`/api/metrics/${selectedDate}?time_range=${selectedTime}`)
+    fetchWithAuth(`/api/metrics/${selectedDate}?time_range=${selectedTime}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -239,8 +341,6 @@ function displayNoDataMessage() {
 
 function displayMetricsChart(data) {
     const ctx = document.getElementById('metricsChart').getContext('2d');
-
-    // Sort data by timestamp in ascending order
     data.sort((a, b) => new Date(a[0]) - new Date(b[0]));
     
     if (metricsChart) {
@@ -250,7 +350,7 @@ function displayMetricsChart(data) {
     metricsChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: data.map(d => d[0].split(' ')[1]), // Show only time
+            labels: data.map(d => d[0].split(' ')[1]),
             datasets: [
                 {
                     label: 'Temperatura Promedio',
@@ -294,28 +394,7 @@ function displayMetricsChart(data) {
     });
 }
 
-// Botón para pausar/reanudar la consulta
-document.getElementById("toggleSimulation").addEventListener("click", function () {
-    if (isRunning) {
-        clearInterval(interval);
-        this.textContent = "Reanudar";
-        console.log("Simulación pausada");
-    } else {
-        startFetching();
-        this.textContent = "Pausar";
-        console.log("Simulación reanudada");
-    }
-    isRunning = !isRunning;
-});
-
-// Comienza la consulta de datos
-startFetching();
-
-// Agregar eventos a los botones de exportación
-document.getElementById("exportJSON").addEventListener("click", exportToJSON);
-document.getElementById("exportCSV").addEventListener("click", exportToCSV);
-
-// Función para exportar datos a JSON
+// Export functions
 function exportToJSON() {
     const data = timestamps.map((timestamp, index) => ({
         timestamp: timestamp,
@@ -326,15 +405,13 @@ function exportToJSON() {
 }
 
 function exportToCSV() {
-    let csvContent = "Timestamp,Temperature\n"; // Encabezados
+    let csvContent = "Timestamp,Temperature\n";
     timestamps.forEach((timestamp, index) => {
-        csvContent += `${timestamp},${temperatures[index]}\n`; // Alineación correcta
+        csvContent += `${timestamp},${temperatures[index]}\n`;
     });
     downloadFile("temperaturas.csv", csvContent, "text/csv");
 }
 
-
-// Función auxiliar para descargar archivos
 function downloadFile(filename, content, type) {
     const blob = new Blob([content], { type });
     const link = document.createElement("a");
@@ -343,28 +420,7 @@ function downloadFile(filename, content, type) {
     link.click();
 }
 
-function getPointColor(temp) {
-    if (temp >= 37) return "red";  // Temperatura alta (peligro)
-    if (temp <= 24) return "blue"; // Temperatura baja (peligro)
-    return "black";  // Normal
-}
-
-//Nuevo codigo
-let alertList = [];
-let hasNewAlert = false;
-
-document.getElementById("viewAlerts").addEventListener("click", function () {
-    const alertContainer = document.getElementById("alertContainer");
-    alertContainer.classList.toggle("hidden"); // Mostrar/Ocultar alertas
-
-    // Si se abren las alertas, quitar el indicador 🔴
-    if (!alertContainer.classList.contains("hidden")) {
-        hasNewAlert = false;
-        document.getElementById("alertIndicator").classList.add("hidden");
-    }
-});
-
-// Función para agregar alertas de manera controlada
+// Alert functions
 function checkCriticalTemperature(temp, timestamp) {
     let message = "";
     if (temp >= 37) {
@@ -373,24 +429,18 @@ function checkCriticalTemperature(temp, timestamp) {
         message = `❄ Alerta: Temperatura baja (${temp}°C) a las ${timestamp}`;
     }
 
-    // Aplicamos una probabilidad del 30% para que la alerta se genere
-    if (message && Math.random() < 0.3) {  // 30% de probabilidad
+    if (message && Math.random() < 0.3) {
         alertList.push(message);
         updateAlertList();
         notifyNewAlert();
     }
 }
 
-// Función para actualizar la lista de alertas en pantalla
-// Limite alert list size
 function updateAlertList() {
-    // Keep only last 10 alerts
     if (alertList.length > 10) {
         alertList = alertList.slice(-10);
     }
-
-    // Reverse the array so the most recent alert is at the top
-    alertList = alertList.reverse(); 
+    alertList = alertList.reverse();
     
     const alertListElement = document.getElementById("alertList");
     alertListElement.innerHTML = "";
@@ -401,12 +451,13 @@ function updateAlertList() {
     });
 }
 
-// Función para mostrar el indicador 🔴 en el botón
 function notifyNewAlert() {
     hasNewAlert = true;
     document.getElementById("alertIndicator").classList.remove("hidden");
 }
 
-
-
-
+function getPointColor(temp) {
+    if (temp >= 37) return "red";
+    if (temp <= 24) return "blue";
+    return "black";
+}

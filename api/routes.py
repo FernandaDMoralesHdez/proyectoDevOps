@@ -2,7 +2,8 @@ import os
 from flask import Blueprint, jsonify, current_app, request
 from api.metrics import get_average_temperature, get_temperature_extremes, get_anomaly_count
 from monitoring.metrics_monitor import MetricsMonitor
-from datetime import datetime
+from datetime import datetime, timedelta
+from security.auth import requires_auth, create_token
 
 metrics_bp = Blueprint('metrics', __name__)
 
@@ -73,3 +74,37 @@ def get_metrics_by_date(date):
         
     except ValueError:
         return jsonify({"error": "Formato de fecha inválido"})
+
+@metrics_bp.route('/api/metrics/export', methods=['GET'])
+@requires_auth('export')
+def export_metrics():
+    """Only users with export permission can access this"""
+    # Export functionality
+    pass
+
+@metrics_bp.route('/api/metrics/configure', methods=['POST'])
+@requires_auth('configure')
+def configure_metrics():
+    """Only admins can configure the system"""
+    # Configuration functionality
+    pass
+
+@metrics_bp.route('/api/login', methods=['POST'])
+def login():
+    """Login endpoint to get JWT token"""
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    
+    # For demo purposes - in production use proper user database
+    users = {
+        'admin': {'password': 'admin123', 'role': 'admin'},
+        'operator': {'password': 'op123', 'role': 'operator'},
+        'viewer': {'password': 'view123', 'role': 'viewer'}
+    }
+    
+    if username in users and users[username]['password'] == password:
+        token = create_token(username, users[username]['role'])
+        return jsonify({'token': token})
+    
+    return jsonify({'message': 'Invalid credentials'}), 401
