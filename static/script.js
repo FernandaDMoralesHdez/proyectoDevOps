@@ -83,12 +83,12 @@ function login() {
             initializeCharts();
             startFetching();
         } else {
-            alert('Login failed: Invalid credentials');
+            alert('Usuario o contraseña incorrectos');  // Added error message
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Login failed: Server error');
+        alert('Error en el servidor. Por favor, intente más tarde.'); 
     });
 }
 
