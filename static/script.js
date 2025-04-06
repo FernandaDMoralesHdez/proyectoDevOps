@@ -83,7 +83,7 @@ function login() {
             initializeCharts();
             startFetching();
         } else {
-            alert('Usuario o contraseña incorrectos');  // Added error message
+            alert('Usuario o contraseña incorrectos');  // error message
         }
     })
     .catch(error => {
