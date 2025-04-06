@@ -5,6 +5,9 @@ __pycache__/
 .coverage
 htmlcov/
 .env
+db/monitoring.db
+logs/temperature_monitor.logs
+security/reports/security_scan_20250330_162231.json
 
 
 
