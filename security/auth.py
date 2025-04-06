@@ -6,18 +6,20 @@ from datetime import datetime, timedelta
 SECRET_KEY = 'my-secret-key'  # In production, use environment variable
 
 ROLES = {
-    'admin': ['read', 'write', 'export', 'configure'],
-    'operator': ['read', 'export'],
-    'viewer': ['read']
+    'admin': ['read', 'write', 'export', 'configure']
 }
 
 def create_token(username, role):
-    token = jwt.encode({
-        'user': username,
-        'role': role,
-        'exp': datetime.utcnow() + timedelta(hours=24)
-    }, SECRET_KEY, algorithm='HS256')
-    return token
+    expiration = datetime.utcnow() + timedelta(hours=24)
+    return jwt.encode(
+        {
+            'user': username,
+            'role': role,
+            'exp': expiration
+        },
+        SECRET_KEY,
+        algorithm='HS256'
+    )
 
 def requires_auth(permission):
     def decorator(f):
@@ -32,7 +34,7 @@ def requires_auth(permission):
                 payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
                 role = payload['role']
                 
-                if permission not in ROLES[role]:
+                if role != 'admin':  # Only allow admin
                     return jsonify({'message': 'Insufficient permissions'}), 403
                 
             except jwt.ExpiredSignatureError:

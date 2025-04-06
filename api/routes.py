@@ -96,11 +96,9 @@ def login():
     username = data.get('username')
     password = data.get('password')
     
-    # For demo purposes - in production use proper user database
+    # Simplified to only admin
     users = {
-        'admin': {'password': 'admin123', 'role': 'admin'},
-        'operator': {'password': 'op123', 'role': 'operator'},
-        'viewer': {'password': 'view123', 'role': 'viewer'}
+        'admin': {'password': 'admin123', 'role': 'admin'}
     }
     
     if username in users and users[username]['password'] == password:
