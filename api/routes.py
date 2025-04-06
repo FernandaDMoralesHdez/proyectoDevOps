@@ -4,7 +4,9 @@ from api.metrics import get_average_temperature, get_temperature_extremes, get_a
 from monitoring.metrics_monitor import MetricsMonitor
 from datetime import datetime, timedelta
 from security.auth import requires_auth, create_token
+from dotenv import load_dotenv
 
+load_dotenv()
 metrics_bp = Blueprint('metrics', __name__)
 
 @metrics_bp.route('/metrics/history', methods=['GET'])
@@ -96,13 +98,18 @@ def login():
     username = data.get('username')
     password = data.get('password')
     
-    # Simplified to only admin
     users = {
-        'admin': {'password': 'admin123', 'role': 'admin'}
+        'admin': {
+            'password': os.environ.get('ADMIN_PASSWORD'),
+            'role': 'admin'
+        }
     }
     
     if username in users and users[username]['password'] == password:
         token = create_token(username, users[username]['role'])
-        return jsonify({'token': token})
+        return jsonify({
+            'token': token,
+            'role': users[username]['role']
+        })
     
     return jsonify({'message': 'Invalid credentials'}), 401
